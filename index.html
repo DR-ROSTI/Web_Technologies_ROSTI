@@ -3,7 +3,7 @@
 <head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Construct - Доставка еды</title>
+    <title>Рог изобилия - Доставка еды</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,12 +11,13 @@
 </head>
 <body>
     <header>
-        <h1>Food construct</h1>
+        <h1><img src="images/logo.jpg" alt="Логотип компании" class="logo">Рог изобилия</h1>
         <nav>
             <a href="about">О нас</a>
             <a href="make_a_lunch">Собрать ланч</a>
             <a href="orders">Заказы</a>
             <a href="#contacts">Контакты</a>
+            <a href="login.html">Войти</a>
         </nav>
     </header>
 
@@ -24,17 +25,20 @@
         <section id="about">
             <img src="images/main_cover.jpg" alt="Фото-обложка">
             <h2>О нас</h2>
-            <p>Food Construct - доставка бизнес-ланчей в Москве. Мы привезём вам 
-                горячую вкусную еду в любую точку города к назначенному времени.
+            <p>Рог изобилия - доставка бизнес-ланчей со средиземноморской кухней по всей 
+                Москве. Мы привезём вам 
+                горячую вкусную еду в любую точку города к назначенному времени. Ваше здоровье - 
+                наша забота. Питайтесь правильно и вкусно!
             </p>
         </section>
 
         <section>
-            <h2>Преимущества Food Construct</h2>
+            <h2>Преимущества "Рога изобилия"</h2>
             <ul>
                 <li>Привозим обед к назначенному времени без опозданий</li>
                 <li>Надёжно упаковываем блюда в удобные контейнеры бесплатно</li>
                 <li>Доставляем ланчи весь день с 7:00 до 23:00</li>
+                <li>Средиземноморская кухня идеально подходит для сидячей работы в офисе</li>
             </ul>
         </section>    
 
@@ -49,36 +53,87 @@
                 </tr>
                 <tr>
                     <th>1</th>
-                    <th>Лазанья</th>
-                    <th>185</th>
-                    <th>385₽</th>
+                    <th>Мусака с говядиной и баклажанами</th>
+                    <th>192</th>
+                    <th>410₽</th>
                 </tr>
                 <tr>
                     <th>2</th>
-                    <th>Том Ям с креветками</th>
-                    <th>161</th>
-                    <th>365₽</th>
+                    <th>Куриный сувлаки с питой и соусом дзадзики</th>
+                    <th>178</th>
+                    <th>390₽</th>
                 </tr>
                  <tr>
                     <th>3</th>
-                    <th>Норвежский суп</th>
-                    <th>144</th>
-                    <th>270₽</th>
+                    <th>Паста орзо с кальмарами и томатами</th>
+                    <th>156</th>
+                    <th>420₽</th>
                 </tr>
                  <tr>
                     <th>4</th>
-                    <th>Жареная картошка с грибами</th>
-                    <th>132</th>
-                    <th>150₽</th>
+                    <th>Традиционный греческий салат с сыром фета</th>
+                    <th>140</th>
+                    <th>320₽</th>
                 </tr>
                  <tr>
                     <th>5</th>
-                    <th>Котлеты из курицы с картофельным пюре</th>
-                    <th>128</th>
-                    <th>225₽</th>
+                    <th>Томатный крем-суп с базиликом</th>
+                    <th>135</th>
+                    <th>260₽</th>
                 </tr>
             </table>
         </section>
+
+        <section id="feedback">
+    <h2>Форма обратной связи</h2>
+    <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data" class="mediterranean-form">
+        <div class="form-group">
+            <label for="fullname">ФИО</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Иванов Иван Иванович" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Адрес электронной почты</label>
+            <input type="email" id="email" name="email" placeholder="Введите email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Откуда вы узнали о нас?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="source" value="friends" required> Рассказали друзья</label>
+                <label><input type="radio" name="source" value="internet"> Реклама в интернете</label>
+                <label><input type="radio" name="source" value="search"> Обнаружил сам</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Категория обращения</label>
+            <select id="category" name="category">
+                <option value="suggestion">Предложение</option>
+                <option value="complaint">Жалоба</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Текст сообщения</label>
+            <textarea id="message" name="message" rows="5" placeholder="Напишите всё, что думаете..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="attachment">Вложение</label>
+            <input type="file" id="attachment" name="attachment">
+        </div>
+
+        <div class="form-group checkbox-group">
+            <label>
+                <input type="checkbox" name="consent" required> 
+                Даю согласие на обработку персональных данных
+            </label>
+        </div>
+
+        <button type="submit" class="submit-btn">Отправить</button>
+    </form>
+</section>
     </main>
     <footer id="contacts">
         <p>Позвонить нам: <a href="tel:+70000000000">+7-000-000-00-00</a></p>
