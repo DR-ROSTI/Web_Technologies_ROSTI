@@ -11,21 +11,48 @@ body {
     background-color: lightgray;
     background-attachment: fixed;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }   
 
-header, main {
+main {
     background-color: white;
     max-width: 800px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; 
+    width: 100%;
 }
+
 
 header{
     background-image: url('images/header_bg2.jpg');
-    background-size: 100% auto;
-    background-position: bottom center;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-div, header, footer, main, nav, section {
+header h1{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    gap: 15px; 
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+}
+
+nav a.active {
+    color: tomato
+}
+
+div, main, section {
     margin: 0 auto;
     padding: 20px;
     max-width: 800px;
@@ -96,7 +123,8 @@ footer {
     background-color: black;
     color: white;
     text-align: left;
-    max-width: 1000px;
+    width: 100%;
+
     
 }
 
@@ -106,6 +134,9 @@ footer a {
 
 footer p {
     color: white;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .mediterranean-form {
@@ -202,4 +233,38 @@ footer p {
 .auth-container h2 {
     text-align: center;
     margin-top: 0;
+}
+
+@media (max-width: 800px) {
+    nav {
+        justify-content: space-between;
+    }
+    #about img {
+        width: 500px;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        text-align: center;
+    }
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav a {
+        font-size: 22px;
+    }
+    #about img {
+        width: 100%;
+    }
+    table {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    table {
+        font-size: 12px;
+    }
 }

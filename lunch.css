@@ -1,0 +1,105 @@
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.dish-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px;
+    border-radius: 35px;
+    cursor: pointer;
+    background-color: white;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    border: 2px solid transparent; 
+    transition: all 0.3s ease;
+}
+
+.dish-card:hover {
+    border: 2px solid tomato;
+}
+
+.dish-card:hover button {
+    background-color: #dcd9d4;
+}
+
+.dish-card img {
+    width: 100%;
+    border-radius: 35px;
+}
+
+.dish-card .price, .dish-card .name {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.dish-card .weight {
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.dish-card button {
+    background-color: #f1eee9;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: auto;
+}
+
+.order-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background-color: #fcfcfc;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.order-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.order-col label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.order-col input, .order-col select, .order-col textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+.hint {
+    font-size: 12px;
+    font-style: italic;
+    color: gray;
+}
+
+@media (max-width: 800px) {
+    .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-category h2 {
+        text-align: center;
+    }
+    .dishes-grid {
+        grid-template-columns: 1fr;
+    }
+    .order-form {
+        grid-template-columns: 1fr;
+    }
+}

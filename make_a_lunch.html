@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сбор заказа</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lunch.css">
+    <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+    <header>
+        <h1><img src="images/logo.jpg" alt="Логотип компании" class="logo">Рог изобилия</h1>
+        <nav>
+            <a href="index.html">О нас</a>
+            <a href="make_a_lunch.html" class="active">Собрать ланч</a>
+            <a href="orders">Заказы</a>
+            <a href="#contacts">Контакты</a>
+            <a href="login.html">Войти</a>
+        </nav>
+    </header>
+    <main>
+        <section class="menu-category">
+            <h2>Супы</h2>
+            <div class="dishes-grid">
+                <div class="dish-card">
+                    <img src="images/soup1.jfif" alt="Суп Гаспачо">
+                    <p class="price">320 ₽</p>
+                    <p class="name">Томатный суп Гаспачо с базиликом</p>
+                    <p class="weight">300 мл</p>
+                    <button>Добавить</button>
+                </div>
+                <div class="dish-card">
+                    <img src="images/soup2.jfif" alt="Чечевичный суп">
+                    <p class="price">290 ₽</p>
+                    <p class="name">Традиционный чечевичный суп</p>
+                    <p class="weight">300 мл</p>
+                    <button>Добавить</button>
+                </div>
+                <div class="dish-card">
+                    <img src="images/soup3.jpg" alt="Средиземноморский суп">
+                    <p class="price">390 ₽</p>
+                    <p class="name">Средиземноморский рыбный суп с морепродуктами</p>
+                    <p class="weight">350 мл</p>
+                    <button>Добавить</button>
+                </div>
+            </div>
+        </section>
+        <section class="menu-category">
+            <h2>Главные блюда</h2>
+            <div class="dishes-grid">
+                <div class="dish-card">
+                    <img src="images/dish1.jpg" alt="Паста">
+                    <p class="price">420 ₽</p>
+                    <p class="name">Паста орзо с кальмарами</p>
+                    <p class="weight">250 г</p>
+                    <button>Добавить</button>
+                </div>
+                <div class="dish-card">
+                    <img src="images/dish2.webp" alt="Мусака">
+                    <p class="price">410 ₽</p>
+                    <p class="name">Мусака с говядиной и баклажанами</p>
+                    <p class="weight">300 г</p>
+                    <button>Добавить</button>
+                </div>
+                <div class="dish-card">
+                    <img src="images/dish3.webp" alt="Куриный сувлаки">
+                    <p class="price">390 ₽</p>
+                    <p class="name">Куриный сувлаки с питой</p>
+                    <p class="weight">280 г</p>
+                    <button>Добавить</button>
+                </div>
+            </div>
+        </section>
+        <section class="menu-category">
+            <h2>Напитки</h2>
+            <div class="dishes-grid">
+                <div class="dish-card">
+                    <img src="images/juice1.webp" alt="Апельсиновый сок">
+                    <p class="price">120 ₽</p>
+                    <p class="name">Апельсиновый сок</p>
+                    <p class="weight">300 мл</p>
+                    <button>Добавить</button>
+                </div>
+                <div class="dish-card">
+                    <img src="images/juice2.webp" alt="Яблочный сок">
+                    <p class="price">90 ₽</p>
+                    <p class="name">Яблочный сок</p>
+                    <p class="weight">300 мл</p>
+                    <button>Добавить</button>
+                </div>
+                <div class="dish-card">
+                    <img src="images/juice3.webp" alt="Морковный сок">
+                    <p class="price">110 ₽</p>
+                    <p class="name">Морковный сок</p>
+                    <p class="weight">300 мл</p>
+                    <button>Добавить</button>
+                </div>
+            </div>
+        </section>
+        <section class="order-section">
+            <h2>Сделать заказ</h2>
+            <form action="https://httpbin.org/post" method="POST" class="order-form">
+                <div class="order-col">
+                    <h3>Ваш заказ</h3>
+                    <label>Суп</label>
+                    <select name="soup"><option>-- Выберите суп --</option><option>Томатный суп Гаспачо с базиликом</option><option>Традиционный чечевичный суп</option><option>Средиземноморский рыбный суп с морепродуктами</option></select>
+                    <label>Главное блюдо</label>
+                    <select name="main_dish"><option>-- Выберите главное блюдо --</option><option>Паста орзо с кальмарами</option><option>Мусака с говядиной и баклажанами</option><option>Куриный сувлаки с питой</option></select>                    
+                    <label>Напиток</label>
+                    <select name="drink"><option>-- Выберите напиток --</option><option>Апельсиновый сок</option><option>Яблочный сок</option><option>Морковный сок</option></select>                  
+                    <label>Комментарии к заказу</label>
+                    <textarea name="comments" rows="4"></textarea>
+                </div>
+                <div class="order-col">
+                    <h3>Ваши данные</h3>
+                    <label>Имя</label>
+                    <input type="text" name="name">
+                    <label>Email</label>
+                    <input type="email" name="email">
+                    <label><input type="checkbox"> Получать информацию о скидках</label>
+                    <label>Номер телефона</label>
+                    <input type="text" name="phone">
+                    <label>Адрес доставки</label>
+                    <input type="text" name="address">
+                    <p class="hint">Доставка осуществляется только по Москве</p>
+                    <div class="form-buttons">
+                        <button type="reset">Сбросить</button>
+                        <button type="submit" class="submit-btn">Отправить</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer id="contacts">
+        <p>Позвонить нам: <a href="tel:+70000000000">+7-000-000-00-00</a></p>
+    </footer>
+</body>
+</html>
