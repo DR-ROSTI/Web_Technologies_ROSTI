@@ -8,20 +8,23 @@
 .dish-card {
     display: flex;
     flex-direction: column;
-    padding: 30px 40px;
-    border-radius: 35px;
+    padding: 20px 15px;
+    border-radius: 25px;
     cursor: pointer;
     background-color: white;
     filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
     border: 2px solid transparent; 
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
-.dish-card:hover {
+.dish-card:hover,
+.dish-card.selected {
     border: 2px solid tomato;
 }
 
-.dish-card:hover button {
+.dish-card:hover button,
+.dish-card.selected button {
     background-color: #dcd9d4;
 }
 
@@ -53,6 +56,10 @@
     margin-top: auto;
 }
 
+.order-title {
+    text-align: center;
+}
+
 .order-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -62,10 +69,54 @@
     border-radius: 12px;
 }
 
+.order-form div {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
 .order-col {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.order-col h3 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.nothing-selected {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px 0 20px 0;
+}
+
+.order-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.order-item p {
+    margin: 3px 0;
+}
+
+.order-category-title {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.order-dish-text {
+    font-size: 16px;
+}
+
+.order-total-price {
+    font-size: 22px;
+    font-weight: bold;
 }
 
 .order-col label {
@@ -73,17 +124,77 @@
     font-weight: bold;
 }
 
-.order-col input, .order-col select, .order-col textarea {
+.comments-label {
+    font-weight: normal !important;
+    margin-top: 15px !important;
+}
+
+.checkbox-label,
+.radio-label {
+    font-weight: normal !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px !important;
+    cursor: pointer;
+}
+
+.delivery-fieldset {
+    border: none;
+    padding: 0;
+    margin: 10px 0 5px 0;
+}
+
+.delivery-fieldset legend {
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.order-col input[type="text"],
+.order-col input[type="email"],
+.order-col input[type="tel"],
+.order-col input[type="time"],
+.order-col select,
+.order-col textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-family: inherit;
+    font-size: 15px;
 }
 
 .hint {
     font-size: 12px;
     font-style: italic;
     color: gray;
+    margin: 0 0 5px 0;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px !important;
+}
+
+.reset-btn, .order-form .submit-btn {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.reset-btn {
+    background-color: white;
+    color: #333;
+    border: 1px solid #333;
+    transition: background-color 0.3s;
+}
+
+.reset-btn:hover {
+    background-color: #f1eee9;
 }
 
 @media (max-width: 800px) {
@@ -97,7 +208,7 @@
         text-align: center;
     }
     .dishes-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(1, 1fr);
     }
     .order-form {
         grid-template-columns: 1fr;

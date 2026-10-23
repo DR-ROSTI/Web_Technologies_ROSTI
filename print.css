@@ -11,6 +11,12 @@ button,
     display: none !important;
 }
 
+body, main {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+}
+
 .dish-card, main {
     box-shadow: none !important;
     filter: none !important;
@@ -18,12 +24,42 @@ button,
 }
 
 .dishes-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
 }
 
 .dish-card {
-    width: 30%;
-    page-break-inside: avoid;
+    width: calc(50% - 10px) !important;
+    padding: 15px !important;
+    box-sizing: border-box;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+}
+
+.dish-card img {
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 15px !important;
+}
+
+.menu-category h2 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    margin-bottom: 10px !important;
+}
+
+.menu-category {
+    display: block !important;
+    page-break-before: always !important;
+    break-before: page !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    margin-bottom: 20px !important;
+}
+
+.menu-category:first-of-type {
+    page-break-before: auto !important;
+    break-before: auto !important;
 }

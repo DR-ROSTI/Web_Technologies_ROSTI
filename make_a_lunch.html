@@ -25,110 +25,72 @@
     <main>
         <section class="menu-category">
             <h2>Супы</h2>
-            <div class="dishes-grid">
-                <div class="dish-card">
-                    <img src="images/soup1.jfif" alt="Суп Гаспачо">
-                    <p class="price">320 ₽</p>
-                    <p class="name">Томатный суп Гаспачо с базиликом</p>
-                    <p class="weight">300 мл</p>
-                    <button>Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/soup2.jfif" alt="Чечевичный суп">
-                    <p class="price">290 ₽</p>
-                    <p class="name">Традиционный чечевичный суп</p>
-                    <p class="weight">300 мл</p>
-                    <button>Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/soup3.jpg" alt="Средиземноморский суп">
-                    <p class="price">390 ₽</p>
-                    <p class="name">Средиземноморский рыбный суп с морепродуктами</p>
-                    <p class="weight">350 мл</p>
-                    <button>Добавить</button>
-                </div>
-            </div>
+            <div class="dishes-grid" id="soups-grid"></div>
         </section>
         <section class="menu-category">
             <h2>Главные блюда</h2>
-            <div class="dishes-grid">
-                <div class="dish-card">
-                    <img src="images/dish1.jpg" alt="Паста">
-                    <p class="price">420 ₽</p>
-                    <p class="name">Паста орзо с кальмарами</p>
-                    <p class="weight">250 г</p>
-                    <button>Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/dish2.webp" alt="Мусака">
-                    <p class="price">410 ₽</p>
-                    <p class="name">Мусака с говядиной и баклажанами</p>
-                    <p class="weight">300 г</p>
-                    <button>Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/dish3.webp" alt="Куриный сувлаки">
-                    <p class="price">390 ₽</p>
-                    <p class="name">Куриный сувлаки с питой</p>
-                    <p class="weight">280 г</p>
-                    <button>Добавить</button>
-                </div>
-            </div>
+            <div class="dishes-grid" id="main-dishes-grid"></div>
         </section>
         <section class="menu-category">
             <h2>Напитки</h2>
-            <div class="dishes-grid">
-                <div class="dish-card">
-                    <img src="images/juice1.webp" alt="Апельсиновый сок">
-                    <p class="price">120 ₽</p>
-                    <p class="name">Апельсиновый сок</p>
-                    <p class="weight">300 мл</p>
-                    <button>Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/juice2.webp" alt="Яблочный сок">
-                    <p class="price">90 ₽</p>
-                    <p class="name">Яблочный сок</p>
-                    <p class="weight">300 мл</p>
-                    <button>Добавить</button>
-                </div>
-                <div class="dish-card">
-                    <img src="images/juice3.webp" alt="Морковный сок">
-                    <p class="price">110 ₽</p>
-                    <p class="name">Морковный сок</p>
-                    <p class="weight">300 мл</p>
-                    <button>Добавить</button>
-                </div>
-            </div>
+            <div class="dishes-grid" id="drinks-grid"></div>
         </section>
+
         <section class="order-section">
             <h2>Сделать заказ</h2>
             <form action="https://httpbin.org/post" method="POST" class="order-form">
                 <div class="order-col">
                     <h3>Ваш заказ</h3>
-                    <label>Суп</label>
-                    <select name="soup"><option>-- Выберите суп --</option><option>Томатный суп Гаспачо с базиликом</option><option>Традиционный чечевичный суп</option><option>Средиземноморский рыбный суп с морепродуктами</option></select>
-                    <label>Главное блюдо</label>
-                    <select name="main_dish"><option>-- Выберите главное блюдо --</option><option>Паста орзо с кальмарами</option><option>Мусака с говядиной и баклажанами</option><option>Куриный сувлаки с питой</option></select>                    
-                    <label>Напиток</label>
-                    <select name="drink"><option>-- Выберите напиток --</option><option>Апельсиновый сок</option><option>Яблочный сок</option><option>Морковный сок</option></select>                  
-                    <label>Комментарии к заказу</label>
-                    <textarea name="comments" rows="4"></textarea>
+                    <input type="hidden" name="soup" id="hidden-soup" value="">
+                    <input type="hidden" name="main-dish" id="hidden-main-dish" value="">
+                    <input type="hidden" name="drink" id="hidden-drink" value="">
+                    <p id="nothing-selected" class="nothing-selected">Ничего не выбрано</p>
+                    <div id="order-summary" class="order-summary" style="display: none;">
+                        <div class="order-item">
+                            <p class="order-category-title">Суп</p>
+                            <p id="order-soup-text" class="order-dish-text">Блюдо не выбрано</p>
+                        </div>
+                        <div class="order-item">
+                            <p class="order-category-title">Главное блюдо</p>
+                            <p id="order-main-text" class="order-dish-text">Блюдо не выбрано</p>
+                        </div>
+                        <div class="order-item">
+                            <p class="order-category-title">Напиток</p>
+                            <p id="order-drink-text" class="order-dish-text">Напиток не выбран</p>
+                        </div>
+                        <div class="order-item total-cost-block" id="total-cost-block">
+                            <p class="order-category-title">Стоимость заказа</p>
+                            <p id="order-total-price" class="order-total-price">0₽</p>
+                        </div>
                 </div>
                 <div class="order-col">
                     <h3>Ваши данные</h3>
-                    <label>Имя</label>
-                    <input type="text" name="name">
-                    <label>Email</label>
-                    <input type="email" name="email">
-                    <label><input type="checkbox"> Получать информацию о скидках</label>
-                    <label>Номер телефона</label>
-                    <input type="text" name="phone">
-                    <label>Адрес доставки</label>
-                    <input type="text" name="address">
+                    <label for="username">Имя</label>
+                    <input type="text" id="username" name="name" required>
+                    <label for="useremail">Email</label>
+                    <input type="email" id="useremail" name="email" required>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="subscribe" checked> Получать информацию о скидках и акциях
+                    </label>
+                    <label for="userphone">Номер телефона</label>
+                    <input type="tel" id="userphone" name="phone" required>
+                    <label for="useraddress">Адрес доставки</label>
+                    <input type="text" id="useraddress" name="address" required>
                     <p class="hint">Доставка осуществляется только по Москве</p>
+                    <fieldset class="delivery-fieldset">
+                        <legend>Время доставки:</legend>
+                        <label class="radio-label">
+                            <input type="radio" name="delivery_type" value="asap" required checked> Как можно скорее
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="delivery_type" value="by_time"> К указанному времени
+                        </label>
+                    </fieldset>
+                    <label for="delivery_time">Укажите время доставки</label>
+                    <input type="time" id="delivery_time" name="delivery_time" min="07:00" max="23:00" step="300">
+                    <p class="hint">Доступное время доставки с 7:00 до 23:00</p>
                     <div class="form-buttons">
-                        <button type="reset">Сбросить</button>
+                        <button type="reset" class="reset-btn">Сбросить</button>
                         <button type="submit" class="submit-btn">Отправить</button>
                     </div>
                 </div>
@@ -138,5 +100,8 @@
     <footer id="contacts">
         <p>Позвонить нам: <a href="tel:+70000000000">+7-000-000-00-00</a></p>
     </footer>
+    <script src="dishes.js"></script>
+    <script src="displayGenerate.js"></script>
+    <script src="order.js"></script>
 </body>
 </html>
