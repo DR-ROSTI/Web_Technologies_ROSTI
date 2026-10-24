@@ -85,6 +85,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const deliveryRadios = document.querySelectorAll('input[name="delivery_type"]');
+    const deliveryTimeInput = document.getElementById('delivery_time');
+    deliveryRadios.forEach(radio => {
+        radio.addEventListener('change', (event) => {
+            if (event.target.value === 'by_time') {
+                deliveryTimeInput.disabled = false;
+                deliveryTimeInput.required = true;
+            } else {
+                deliveryTimeInput.value = '';
+                deliveryTimeInput.disabled = true;
+                deliveryTimeInput.required = false;
+            }
+        });
+    });
+     
     const orderForm = document.getElementById('order-form');
     orderForm.addEventListener('reset', () => {
         selectedDishes['soup'] = null;
@@ -94,5 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
             card.classList.remove('selected');
         });
         updateOrderUI();
+        deliveryTimeInput.value = '';
+        deliveryTimeInput.disabled = true;
+        deliveryTimeInput.required = false;
     });
+   
+
 });
