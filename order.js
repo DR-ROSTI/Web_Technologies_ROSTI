@@ -2,33 +2,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedDishes = {
         'soup': null,
         'main-dish': null,
-        'drink': null
+        'salad': null,
+        'drink': null,
+        'dessert': null
     };
 
     const nothingSelectedText = document.getElementById('nothing-selected');
     const orderSummaryBlock = document.getElementById('order-summary');
     const soupText = document.getElementById('order-soup-text');
     const mainText = document.getElementById('order-main-text');
+    const saladText = document.getElementById('order-salad-text');
     const drinkText = document.getElementById('order-drink-text');
+    const dessertText = document.getElementById('order-dessert-text');
     const totalPriceText = document.getElementById('order-total-price');
     const hiddenSoup = document.getElementById('hidden-soup');
     const hiddenMain = document.getElementById('hidden-main-dish');
+    const hiddenSalad = document.getElementById('hidden-salad');
     const hiddenDrink = document.getElementById('hidden-drink');
+    const hiddenDessert = document.getElementById('hidden-dessert');
 
     function updateOrderUI() {
-        const hasAnySelection = Boolean(
-            selectedDishes['soup'] || 
-            selectedDishes['main-dish'] || 
-            selectedDishes['drink']
-        );
+        const hasAnySelection = Object.values(selectedDishes).some(dish => dish !== null);
         if (!hasAnySelection) {
             nothingSelectedText.style.display = 'block';
             orderSummaryBlock.style.display = 'none';
             hiddenSoup.value = '';
             hiddenMain.value = '';
+            hiddenSalad.value = '';
             hiddenDrink.value = '';
+            hiddenDessert.value = '';
             return;
         }
+
         nothingSelectedText.style.display = 'none';
         orderSummaryBlock.style.display = 'flex';
         let totalCost = 0;
@@ -51,6 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
             hiddenMain.value = '';
         }
 
+        if (selectedDishes['salad']) {
+            saladText.textContent = `${selectedDishes['salad'].name} ${selectedDishes['salad'].price}₽`;
+            hiddenSalad.value = selectedDishes['salad'].keyword;
+            totalCost += selectedDishes['salad'].price;
+        } else {
+            saladText.textContent = 'Блюдо не выбрано';
+            hiddenSalad.value = '';
+        }
+
         if (selectedDishes['drink']) {
             drinkText.textContent = `${selectedDishes['drink'].name} ${selectedDishes['drink'].price}₽`;
             hiddenDrink.value = selectedDishes['drink'].keyword;
@@ -58,6 +72,15 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             drinkText.textContent = 'Напиток не выбран';
             hiddenDrink.value = '';
+        }
+
+        if (selectedDishes['dessert']) {
+            dessertText.textContent = `${selectedDishes['dessert'].name} ${selectedDishes['dessert'].price}₽`;
+            hiddenDessert.value = selectedDishes['dessert'].keyword;
+            totalCost += selectedDishes['dessert'].price;
+        } else {
+            dessertText.textContent = 'Десерт не выбран';
+            hiddenDessert.value = '';
         }
         totalPriceText.textContent = `${totalCost}₽`;
     }
@@ -67,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const dishObj = dishes.find(item => item.keyword === dishKeyword);
         if (!dishObj) return;
         selectedDishes[dishObj.category] = dishObj;
-
         const parentGrid = cardElement.closest('.dishes-grid');
         if (parentGrid) {
             const allCardsInCategory = parentGrid.querySelectorAll('.dish-card');
@@ -99,12 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-     
+
     const orderForm = document.getElementById('order-form');
     orderForm.addEventListener('reset', () => {
-        selectedDishes['soup'] = null;
-        selectedDishes['main-dish'] = null;
-        selectedDishes['drink'] = null;
+        Object.keys(selectedDishes).forEach(key => {
+            selectedDishes[key] = null;
+        });
         document.querySelectorAll('.dish-card.selected').forEach(card => {
             card.classList.remove('selected');
         });
@@ -113,6 +135,4 @@ document.addEventListener('DOMContentLoaded', () => {
         deliveryTimeInput.disabled = true;
         deliveryTimeInput.required = false;
     });
-   
-
 });
