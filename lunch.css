@@ -253,3 +253,129 @@
     color: #0f4c2a;
     font-weight: bold;
 }
+
+.combo-section {
+    margin-bottom: 20px;
+}
+
+.combo-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.combo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 20px;
+    padding: 0;
+}
+
+.combo-option {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.combo-dish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.combo-dish img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    transition: transform 0.3s ease;
+}
+
+.combo-dish img:hover {
+    transform: translateY(-8px) scale(1.15);
+}
+
+.combo-caption {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.combo-subcaption {
+    font-size: 12px;
+    font-style: italic;
+    margin: 3px 0 0 0;
+    color: #333;
+}
+
+@media (max-width: 800px) {
+    .combo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .combo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.notification-box {
+    background-color: #ffffff;
+    border: 1px solid #333333;
+    padding: 40px 35px;
+    max-width: 420px;
+    width: 90%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+     gap: 25px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.notification-text {
+    font-size: 18px;
+    margin: 0;
+    color: #000;
+}
+
+.notification-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 12px;
+    padding: 8px 28px;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.notification-btn:hover {
+    background-color: tomato;
+    color: #ffffff;
+    border-color: tomato;
+}

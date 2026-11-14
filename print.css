@@ -7,7 +7,9 @@ header nav,
 footer,
 button,
 .order-section,
-.mediterranean-form {
+.mediterranean-form,
+.combo-section,
+.notification-overlay {
     display: none !important;
 }
 

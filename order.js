@@ -135,4 +135,73 @@ document.addEventListener('DOMContentLoaded', () => {
         deliveryTimeInput.disabled = true;
         deliveryTimeInput.required = false;
     });
+
+
+    function showNotification(message) {
+            const existingOverlay = document.querySelector('.notification-overlay');
+            if (existingOverlay) {
+                existingOverlay.remove();
+            }
+
+            const overlay = document.createElement('div');
+            overlay.classList.add('notification-overlay');
+            const box = document.createElement('div');
+            box.classList.add('notification-box');
+
+            const text = document.createElement('p');
+            text.classList.add('notification-text');
+            text.textContent = message;
+
+            const closeBtn = document.createElement('button');
+            closeBtn.type = 'button';
+            closeBtn.classList.add('notification-btn');
+            closeBtn.textContent = 'Окей 👌';
+
+            closeBtn.addEventListener('click', () => {
+                overlay.remove();
+            });
+
+            box.appendChild(text);
+            box.appendChild(closeBtn);
+            overlay.appendChild(box);
+            document.body.appendChild(overlay);
+        }
+
+        function validateLunchCombo() {
+            const hasSoup = Boolean(selectedDishes['soup']);
+            const hasMain = Boolean(selectedDishes['main-dish']);
+            const hasSalad = Boolean(selectedDishes['salad']);
+            const hasDrink = Boolean(selectedDishes['drink']);
+            const hasDessert = Boolean(selectedDishes['dessert']);
+
+            if (!hasSoup && !hasMain && !hasSalad && !hasDrink && !hasDessert) {
+                return 'Ничего не выбрано. Выберите блюда для заказа';
+            }
+
+            if (!hasSoup && !hasMain && !hasSalad && (hasDrink || hasDessert)) {
+                return 'Выберите главное блюдо';
+            }
+
+            if (hasSoup && !hasMain && !hasSalad) {
+                return 'Выберите главное блюдо/салат/стартер';
+            }
+
+            if (hasSalad && !hasSoup && !hasMain) {
+                return 'Выберите суп или главное блюдо';
+            }
+
+            if (!hasDrink) {
+                return 'Выберите напиток';
+            }
+
+            return null;
+        }
+
+        orderForm.addEventListener('submit', (event) => {
+            const errorMessage = validateLunchCombo();
+            if (errorMessage) {
+                event.preventDefault();
+                showNotification(errorMessage);
+            }
+        });
 });
