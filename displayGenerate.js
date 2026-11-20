@@ -1,4 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
+let dishes = [];
+const API_URL = 'https://raw.githubusercontent.com/DR-ROSTI/Web_Technologies_ROSTI/refs/heads/main/dishes_db.json';
+
+async function loadDishes() {
+    try {
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+            throw new Error(`Ошибка HTTP: ${response.status}`);
+        }
+        const data = await response.json();
+
+        dishes = data.dishes.map(dish => ({
+            ...dish,
+            category: dish.category === 'main-course' ? 'main-dish' : dish.category
+        }));
+    } catch (error) {
+        console.error('Не удалось загрузить блюда:', error);
+    }
+}
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadDishes();
+
     dishes.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
 
     const grids = {
